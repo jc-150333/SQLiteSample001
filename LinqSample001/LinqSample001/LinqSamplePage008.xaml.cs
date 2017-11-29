@@ -2,7 +2,7 @@
 
 namespace LinqSample001
 {
-    public partial class SQLiteSamplePage008 : ContentPage
+    public partial class LinqSamplePage008 : ContentPage
     {
         /*public SQLiteSamplePage007()
         {
@@ -22,8 +22,9 @@ namespace LinqSample001
             Content = layout;
         }*///おかしくなったら下のソース消してこれのコメントアウトを解呪する!
 
-        public SQLiteSamplePage008()
+        public LinqSamplePage008()
         {
+            InitializeComponent();
 
             var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
 

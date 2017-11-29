@@ -15,8 +15,8 @@ namespace LinqSample001
         //名前列
         public string Name { get; set; }
 
-        //インサートフラグ
-        public bool Flug { get; set; }
+        //画像列(仮)
+        public byte[] Picture { get; set; }
 
         //Userテーブルに行追加するためのメソッド
         public static void insertUser(string name)
@@ -24,34 +24,40 @@ namespace LinqSample001
             //データベースに接続する
             using (SQLiteConnection db = new SQLiteConnection(App.dbPath))
             {
+
                 try
                 {
                     //データベースにUserテーブルを作成する
                     db.CreateTable<UserModel008>(); //赤線出てたから<UserModel007>付けた
-                                                    //Userテーブルに行追加する
-                    db.Insert(new UserModel008() { Name = name, Flug = true });
+
+                    //Userテーブルに行追加する
+                    db.Insert(new UserModel008() { Name = name });
+
                     db.Commit();
+
                 }
                 catch (Exception e)
                 {
+
                     db.Rollback();
                     System.Diagnostics.Debug.WriteLine(e);
+
                 }
             }
         }
 
-        //Userテーブルに行追加するためのメソッド（↑オーバーロードした）
-        public static void insertUser(int id, string name)
+        /*画像を追加するためのメソッド(ここにエンコードする処理書くのかと思う。それか上のインサートするメソッドのとこか。)
+        public static void inserPicture(byte[] picture)
         {
             //データベースに接続する
             using (SQLiteConnection db = new SQLiteConnection(App.dbPath))
             {
                 try
                 {
-                    //データベースにUserテーブルを作成する
-                    db.CreateTable<UserModel008>(); //赤線出てたから<UserModel007>付けた
-                                                    //Userテーブルに行追加する
-                    db.Insert(new UserModel008() { Name = name, Id = id, Flug = true });
+                    //データベースにUserテーブルを作成する(画像の時もこれいるのか?)
+                    db.CreateTable<UserModel>(); //赤線出てたから<UserModel>付けた
+                    //Userテーブルに行追加する
+                    db.Insert(new UserModel() { Picture = picture });
                     db.Commit();
                 }
                 catch (Exception e)
@@ -60,10 +66,10 @@ namespace LinqSample001
                     System.Diagnostics.Debug.WriteLine(e);
                 }
             }
-        }
+        }*/
 
         //Userテーブルの行データを取得するメソッド
-        public static List<UserModel008> selectUser() 
+        public static List<UserModel008> selectUser() //赤線出てたから<UserModel77>付けた
         {
             using (SQLiteConnection db = new SQLiteConnection(App.dbPath))
             {
@@ -71,7 +77,7 @@ namespace LinqSample001
                 try
                 {
                     //データベースに指定したSQLを発行します
-                    return db.Query<UserModel008>("SELECT * FROM [User] "); 
+                    return db.Query<UserModel008>("SELECT * FROM [User] "); //赤線出てたから<UserModel007>付けた
 
                 }
                 catch (Exception e)
@@ -82,27 +88,5 @@ namespace LinqSample001
                 }
             }
         }
-
-        //Userテーブルの行データを取得するメソッド
-        public static List<UserModel008> selectFlug()
-        {
-            using (SQLiteConnection db = new SQLiteConnection(App.dbPath))
-            {
-
-                try
-                {
-                    //データベースに指定したSQLを発行します
-                    return db.Query<UserModel008>("SELECT Flug FROM [User] ");
-
-                }
-                catch (Exception e)
-                {
-
-                    System.Diagnostics.Debug.WriteLine(e);
-                    return null;
-                }
-            }
-        }
-
     }
 }
