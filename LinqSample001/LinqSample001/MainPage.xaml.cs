@@ -11,7 +11,6 @@ namespace LinqSample001
     {
         public MainPage()
         {
-            InitializeComponent();
         }
     }
 }
