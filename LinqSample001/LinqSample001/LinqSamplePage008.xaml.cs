@@ -28,7 +28,7 @@ namespace LinqSample001
 
             var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
 
-            //Userテーブルに適当なデータを追加する
+            //Userテーブルに適当なデータを追加する!
             UserModel008.insertUser("鈴木");
             UserModel008.insertUser("田中");
             UserModel008.insertUser("斎藤");
