@@ -12,6 +12,28 @@ namespace LinqSample001
         public MainPage()
         {
             InitializeComponent();
+
+            var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
+
+            //Userテーブルに適当なデータを追加する!
+            UserModel008.insertUser("鈴木");
+            UserModel008.insertUser("田中");
+            UserModel008.insertUser("斎藤");
+
+            var button = new Button { Text = "Load" };
+
+            var content = new ContentPage
+            {
+                Title = "SQLite",
+                Content = new StackLayout
+                {
+                    VerticalOptions = LayoutOptions.Center,
+                    Children =
+                    {
+                        button
+                    }
+                },
+            };
         }
     }
 }
