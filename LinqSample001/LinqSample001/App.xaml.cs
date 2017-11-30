@@ -15,23 +15,7 @@ namespace LinqSample001
 
             InitializeComponent();
 
-            //MainPage = new LinqSamplePage008();
-
-            var button = new Button { Text = "Load" };
-
-            var content = new ContentPage
-            {
-                Title = "SQLite",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children =
-                    {
-                        button
-                    }
-                },
-            };
-            MainPage = new NavigationPage(content);
+            MainPage = new LinqSamplePage008();
         }
 
         protected override void OnStart()
