@@ -48,7 +48,7 @@ namespace LinqSample001
                 }
             };
 
-            button.Clicked += async (sender, args) =>
+            button.Clicked += delegate
             {
                 var query = UserModel008.selectUser();
 
